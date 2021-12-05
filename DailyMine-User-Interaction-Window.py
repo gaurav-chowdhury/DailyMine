@@ -3,8 +3,9 @@ import time
 
 def logInfo(action, logLocation):
     os.chdir(logLocation)
-    #complete the function - add time stamp and action 
-
+    timeStamp = time.ctime(time.time())
+    with open("logs.txt", "at") as f:
+        f.write(f"[{timeStamp}]: {action}\n")
 
 
 
