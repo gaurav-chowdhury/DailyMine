@@ -1,12 +1,14 @@
 import os
 
 #Installs required external modules
-print()
+print("Installing required modules...")
 modules = ["plyer", "schedule"]
 for module in modules: 
     os.system(f"pip install {module}")
+print("Finished installing required modules")
 
 #Creates the directory structure for the program
+print("Creating the required directory structure...")
 parentDir = os.getcwd()
 childDirs = {
     "Reminders" : ["Daily", "Weekly", "Monthly", "Yearly", "Logs"], 
@@ -15,7 +17,7 @@ childDirs = {
 }
 folders = childDirs.keys()
 for folder in folders:
-    path = os.path.join(parentDir, folder)
+    path = f"{parentDir}/{folder}"
     os.mkdir(path)
     os.chdir(path)
     files = childDirs[folder]
@@ -23,7 +25,8 @@ for folder in folders:
         f = open(f"{f}.txt", "xt")
         f.close()
     os.chdir(parentDir)
-print()
+print("Finished creating the required directory structure")
+
 
 
 
