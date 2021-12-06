@@ -10,41 +10,41 @@ def logInfo(action, logLocation):
 def setReminder():
     pass
 
-print("Welcome to DailyMine's user interaction window!")
+print("\nWelcome to DailyMine's user interaction window!")
 parentDir = os.getcwd()
 run_0 = True
 while run_0:
-    print("What would you like to do?")
-    print("Set a reminder - 1")
-    print("Use system organiser  - 2")
-    print("Use time manager - 3")
-    print("Exit - 4")
-    welcome = input("Enter the number corresponding to the option which you want to select:")
+    print("\n\tWhat would you like to do?")
+    print("\tSet a reminder - 1")
+    print("\tUse system organiser  - 2")
+    print("\tUse time manager - 3")
+    print("\tExit - 4")
+    welcome = input("\nEnter the number corresponding to the option which you want to select: ")
     if welcome == "1":
         run_1 = True
         while run_1:
-            print("What would you like to do?")
-            print("Set a daily reminder - 1")
-            print("Set a weekly reminder - 2")
-            print("Set a monthly reminder - 3")
-            print("Set a yearly reminder - 4")
-            print("Go back - 5")
-            reminder = input("Enter the number corresponding to the option which you want to select:")
+            print("\n\tWhat would you like to do?")
+            print("\tSet a daily reminder - 1")
+            print("\tSet a weekly reminder - 2")
+            print("\tSet a monthly reminder - 3")
+            print("\tSet a yearly reminder - 4")
+            print("\tGo back - 5")
+            reminder = input("\nEnter the number corresponding to the option which you want to select: ")
             if reminder == "1":
                 run_2 = True 
                 while run_2:
-                    remTime = input("Enter the time of the day at which you want a daily reminder in 24 (00:00) hrs format:")
-                    remTune = input("Enter the path to the audio file which you want to use as the tune for reminder:")
-                    remTitle = input("Enter a title for the reminder:")
-                    remDescription = input("Enter a desciption for the reminder:")
-                    print("How often do you want to get this reminder?")
-                    print("Every hour - 1")
-                    print("Every 30 minutes - 2")
-                    print("Every 15 minutes - 3")
-                    print("Every 10 minutes - 4")
-                    print("Every 5 minutes - 5")
-                    print("Only once at the set time - 6")
-                    remFrequency = input("Enter the number corresponding to the option which you want to select:")
+                    remTime = input("\nEnter the time of the day at which you want a daily reminder in 24 (00:00) hrs format: ")
+                    remTune = input("Enter the path to the audio file which you want to use as the tune for reminder: ")
+                    remTitle = input("Enter a title for the reminder: ")
+                    remDescription = input("Enter a desciption for the reminder: ")
+                    print("\nHow often do you want to get this reminder?")
+                    print("\n\tEvery hour - 1")
+                    print("\tEvery 30 minutes - 2")
+                    print("\tEvery 15 minutes - 3")
+                    print("\tEvery 10 minutes - 4")
+                    print("\tEvery 5 minutes - 5")
+                    print("\tOnly once at the set time - 6")
+                    remFrequency = input("\nEnter the number corresponding to the option which you want to select: ")
                     if remFrequency == "1":
                         remFrequency = 60
                     elif remFrequency == "2":
@@ -63,10 +63,10 @@ while run_0:
                     # setReminder()
                     # print("")
                     # logInfo()
-                    print("Do you want to add another daily reminder?")
-                    print("Yes - 1")
-                    print("No - 2")
-                    continuation = input("Enter the number corresponding to the option which you want to select:")
+                    print("\nDo you want to add another daily reminder?")
+                    print("\n\tYes - 1")
+                    print("\tNo - 2")
+                    continuation = input("\nEnter the number corresponding to the option which you want to select:")
                     if continuation == "1":
                         run_2 = True
                     elif continuation == "2":
@@ -88,13 +88,14 @@ while run_0:
     elif welcome == "2":
         run_1 = True
         while run_1:
-            print("What would you like to do?")
-            print("Remove duplicate files - 1")
-            print("Group similar files into a folder - 2")
-            print("Go back - 3")
-            sysOrganiser = input("Enter the number corresponding to the option which you want to select:")
+            print("\nWhat would you like to do?")
+            print("\n\tRemove duplicate files - 1")
+            print("\tGroup similar files into a folder - 2")
+            print("\tGo back - 3")
+            sysOrganiser = input("\nEnter the number corresponding to the option which you want to select: ")
             if sysOrganiser == "1":
-                path = input("Enter the path to the files:")
+                path = input("\nEnter the path to the files: ")
+                print()
                 os.chdir(path)
                 fileExists = []
                 skipped = removed = 0
@@ -110,7 +111,7 @@ while run_0:
                         os.remove(dirFile)
                         print(f"Removed {dirFile} from the system")
                         removed += 1 
-                print(f"Skipped removing {skipped} files from the system")
+                print(f"\nSkipped removing {skipped} files from the system")
                 print(f"Removed {removed} files from the system ")
                 logInfo(f"Skipped removing {skipped} files and removed {removed} files from the system", f"{parentDir}/System-Organiser")
                 os.chdir(parentDir)
@@ -129,7 +130,7 @@ while run_0:
     else:
         print("Invalid input!")
         continue
-print("Thank you for using this window!")
+print("\nThank you for using this window!\n")
 
 
 
