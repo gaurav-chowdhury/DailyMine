@@ -7,8 +7,10 @@ def logInfo(action, logLocation):
     with open("logs.txt", "at") as f:
         f.write(f"[{timeStamp}]: {action}\n")
 
-def setReminder():
-    pass
+def setReminder(action, remLocation, remFile):
+    os.chdir(remLocation)
+    with open(remFile, "at") as f:
+        f.write(f"{action}\n")
 
 print("\nWelcome to DailyMine's user interaction window!")
 parentDir = os.getcwd()
@@ -59,10 +61,12 @@ while run_0:
                         remFrequency = 0
                     else: 
                         print("Invalid input!")
-                        continue
-                    # setReminder()
-                    # print("")
-                    # logInfo()
+                        continue        
+                    action = f"{remTime} {remTune} {remTitle} {remDescription} {remFrequency}"
+                    setReminder(action, f"{parentDir}/Reminders", "Daily.txt")
+                    os.chdir(parentDir)
+                    print("\nThe reminder has been set succesfully!")
+                    logInfo(f"Set a daily reminder for {remTime} hrs", f"{parentDir}/Reminders")
                     print("\nDo you want to add another daily reminder?")
                     print("\n\tYes - 1")
                     print("\tNo - 2")
