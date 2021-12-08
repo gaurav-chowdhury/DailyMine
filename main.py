@@ -37,7 +37,7 @@ if __name__ == "__main__":
                 #Check available services
                 if timeBankChoice == "0":
                     hold = common.currentTime()
-                    print("\nFollowing are the available services\n")
+                    print("\nFollowing are the available services:\n")
                     common.changeDirectory("time-bank")
                     print("".join(common.workFiles("services.txt", "rt", None)))
                     common.changeDirectory(None)
@@ -47,7 +47,7 @@ if __name__ == "__main__":
                     while True:
                         print("\nHow would you like to modify time bank services?")
                         print("\n\tAdd a service - 0")
-                        print("\tRemove a service - 1")
+                        print("\tRemove a service by time stamp - 1")
                         print("\tRemove all services - 2")
                         print("\tGo back - 3")
                         modifyTimeBankServices = input("\nEnter the number corresponding to the option which you want to select: ")
@@ -55,23 +55,48 @@ if __name__ == "__main__":
                         if modifyTimeBankServices == "0":
                             addService = input("\nEnter the service you wish to add followed by the time it costs in (service - hh:mm:ss) format: ")
                             confirmation = input("\nAre you sure that you want to do this(y/n)? ")
-                            if confirmation in "yY":
+                            if confirmation == "y" or confirmation == "Y":
                                 hold = common.currentTime()
                                 common.changeDirectory("time-bank")
                                 common.workFiles("services.txt", "at", f"[{hold}]: {addService}")
                                 common.changeDirectory(None)
                                 print("\nSuccessfully added the service to time bank's available services")
                                 common.workFiles("logs.txt", "at", f"[{hold}]: Added a new service to services.txt from time bank")
-                            elif confirmation in "nN":
+                            elif confirmation == "n" or confirmation == "N":
                                 print("\nRequest aborted")
                             else:
                                 print("\nInvalid input! Request aborted")
-                        #Remove a service
+                        #Remove a service by time stamp
                         elif modifyTimeBankServices == "1":
-                            pass
+                            removeThisId = input("\nEnter the time stamp for that particular service which you wish to delete from time bank's services: ")
+                            common.changeDirectory("time-bank")
+                            allIds = common.workFiles("services.txt", "rt", None)
+                            finalIds = common.removeIds(removeThisId, allIds)
+                            confirmation = input("\nAre you sure that you want to do this(y/n)? ")
+                            if confirmation == "y" or confirmation == "Y":
+                                hold = common.currentTime()
+                                common.workFiles("services.txt", "wt", "".join(finalIds))
+                                common.changeDirectory(None)
+                                print("\nSuccessfully deleted the record with that time stamp from time bank's services")
+                                common.workFiles("logs.txt", "at", f"[{hold}]: Deleted record with the time stamp {removeThisId} from time bank's services.txt")
+                            elif confirmation == "n" or confirmation == "N":
+                                print("\nRequest aborted")
+                            else:
+                                print("\nInvalid input! Request aborted")
                         #Remove all services
                         elif modifyTimeBankServices == "2":
-                            pass
+                            confirmation = input("\nAre you sure that you want to do this(y/n)? ")
+                            if confirmation == "y" or confirmation == "Y":
+                                hold = common.currentTime()
+                                common.changeDirectory("time-bank")
+                                common.workFiles("services.txt", "wt", "")
+                                common.changeDirectory(None)
+                                print("\nSuccessfully deleted all services from time bank's services")
+                                common.workFiles("logs.txt", "at", f"[{hold}]: Deleted all services from services.txt from time bank")
+                            elif confirmation == "n" or confirmation == "N":
+                                print("\nRequest aborted")
+                            else:
+                                print("\nInvalid input! Request aborted")
                         #Exit this block
                         elif modifyTimeBankServices == "3":
                             break
@@ -97,7 +122,7 @@ if __name__ == "__main__":
             while True:
                 print("\nWhat would you like to do with logs?")
                 print("\n\tCheck logs - 0")
-                print("\tDelete record(s) by time stamp - 1")
+                print("\tDelete record by time stamp - 1")
                 print("\tDelete all records - 2")
                 print("\tGo back - 3")
                 logAcessChoice = input("\nEnter the number corresponding to the option which you want to select: ")
@@ -107,30 +132,30 @@ if __name__ == "__main__":
                     print("\nFollowing are the log records:\n")
                     print("".join(common.workFiles("logs.txt", "rt", None)))
                     common.workFiles("logs.txt", "at", f"[{hold}]: Read and printed logs.txt")
-                #Delete record(s) by time stamp
+                #Delete record by time stamp
                 elif logAcessChoice == "1":
                     removeThisId = input("\nEnter the time stamp for that particular log which you wish to delete: ")
                     allIds = common.workFiles("logs.txt", "rt", None)
                     finalIds = common.removeIds(removeThisId, allIds)
                     confirmation = input("\nAre you sure that you want to do this(y/n)? ")
-                    if confirmation in "yY":
+                    if confirmation == "y" or confirmation == "Y":
                         hold = common.currentTime()
                         common.workFiles("logs.txt", "wt", "".join(finalIds))
                         print("Successfully deleted the record with that time stamp from logs")
                         common.workFiles("logs.txt", "at", f"[{hold}]: Deleted record with the time stamp {removeThisId} from logs.txt")
-                    elif confirmation in "nN":
+                    elif confirmation == "n" or confirmation == "N":
                         print("\nRequest aborted")
                     else:
                         print("\nInvalid input! Request aborted")
                 #Delete all records
                 elif logAcessChoice == "2":
                     confirmation = input("\nAre you sure that you want to do this(y/n)? ")
-                    if confirmation in "yY":
+                    if confirmation == "y" or confirmation == "Y":
                         hold = common.currentTime()
                         common.workFiles("logs.txt", "wt", "")
                         print("\nSuccessfully deleted all records from logs")
                         common.workFiles("logs.txt", "at", f"[{hold}]: Deleted all records from logs.txt")
-                    elif confirmation in "nN":
+                    elif confirmation == "n" or confirmation == "N":
                         print("\nRequest aborted")
                     else:
                         print("\nInvalid input! Request aborted")
