@@ -56,8 +56,7 @@ def removeIds(removeId, allIds):
     """
     for id in allIds:
         if removeId in id:
-            removeThis = id
-    allIds.remove(removeThis)
+            allIds.remove(id)
     return allIds
 
 
