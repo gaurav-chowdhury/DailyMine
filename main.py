@@ -14,9 +14,10 @@ if __name__ == "__main__":
         startChoice = input("\nEnter the number corresponding to the option which you want to select: ")
         #Learn how to use the program
         if startChoice == "0":
-            common.workFiles("logs.txt", "at", f"[{common.currentTime()}]: Accessed learn.txt")
+            hold = common.currentTime()
             print()
             print("".join(common.workFiles("learn.txt", "rt", None)))
+            common.workFiles("logs.txt", "at", f"[{hold}]: Accessed learn.txt")
         #Set reminder(s)
         elif startChoice =="1":
             pass
@@ -43,21 +44,26 @@ if __name__ == "__main__":
                     common.workFiles("logs.txt", "at", f"[{hold}]: Read and printed logs.txt")
                 #Delete record(s) by time stamp
                 elif logAcessChoice == "1":
-                    #code here
-                    confirmation = input("Are you sure that you want to do this(y/n)? ")
+                    removeThisId = input("\nEnter the time stamp for that particular log which you wish to delete: ")
+                    allIds = common.workFiles("logs.txt", "rt", None)
+                    finalIds = common.removeIds(removeThisId, allIds)
+                    confirmation = input("\nAre you sure that you want to do this(y/n)? ")
                     if confirmation in "yY":
-                        pass #code here
+                        hold = common.currentTime()
+                        common.workFiles("logs.txt", "wt", "".join(finalIds))
+                        print("Successfully deleted the record with that time stamp from logs")
+                        common.workFiles("logs.txt", "at", f"[{hold}]: Deleted record with the time stamp {removeThisId} from logs.txt")
                     elif confirmation in "nN":
                         print("\nRequest aborted")
                     else:
                         print("\nInvalid input! Request aborted")
                 #Delete all records
                 elif logAcessChoice == "2":
-                    confirmation = input("Are you sure that you want to do this(y/n)? ")
+                    confirmation = input("\nAre you sure that you want to do this(y/n)? ")
                     if confirmation in "yY":
                         hold = common.currentTime()
                         common.workFiles("logs.txt", "wt", "")
-                        print("\nDeleted all records from logs")
+                        print("\nSuccessfully deleted all records from logs")
                         common.workFiles("logs.txt", "at", f"[{hold}]: Deleted all records from logs.txt")
                     elif confirmation in "nN":
                         print("\nRequest aborted")
