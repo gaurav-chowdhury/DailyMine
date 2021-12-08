@@ -19,14 +19,79 @@ if __name__ == "__main__":
             print("".join(common.workFiles("learn.txt", "rt", None)))
             common.workFiles("logs.txt", "at", f"[{hold}]: Accessed learn.txt")
         #Set reminder(s)
-        elif startChoice =="1":
+        elif startChoice == "1":
             pass
         #Organise your system
-        elif startChoice =="2":
+        elif startChoice == "2":
             pass
         #Use time bank
-        elif startChoice =="3":
-            pass
+        elif startChoice == "3":
+            while True:
+                print("\nWhat would you like to do with time bank?")
+                print("\n\tCheck available services - 0")
+                print("\tModify services - 1")
+                print("\tDeposit time - 2")
+                print("\tWithdraw time - 3")
+                print("\tGo back - 4")
+                timeBankChoice = input("\nEnter the number corresponding to the option which you want to select: ")
+                #Check available services
+                if timeBankChoice == "0":
+                    hold = common.currentTime()
+                    print("\nFollowing are the available services\n")
+                    common.changeDirectory("time-bank")
+                    print("".join(common.workFiles("services.txt", "rt", None)))
+                    common.changeDirectory(None)
+                    common.workFiles("logs.txt", "at", f"[{hold}]: Read and printed services.txt from time bank")
+                #Modify services
+                elif timeBankChoice == "1":
+                    while True:
+                        print("\nHow would you like to modify time bank services?")
+                        print("\n\tAdd a service - 0")
+                        print("\tRemove a service - 1")
+                        print("\tRemove all services - 2")
+                        print("\tGo back - 3")
+                        modifyTimeBankServices = input("\nEnter the number corresponding to the option which you want to select: ")
+                        #Add a service
+                        if modifyTimeBankServices == "0":
+                            addService = input("\nEnter the service you wish to add followed by the time it costs in (service - hh:mm:ss) format: ")
+                            confirmation = input("\nAre you sure that you want to do this(y/n)? ")
+                            if confirmation in "yY":
+                                hold = common.currentTime()
+                                common.changeDirectory("time-bank")
+                                common.workFiles("services.txt", "at", f"[{hold}]: {addService}")
+                                common.changeDirectory(None)
+                                print("\nSuccessfully added the service to time bank's available services")
+                                common.workFiles("logs.txt", "at", f"[{hold}]: Added a new service to services.txt from time bank")
+                            elif confirmation in "nN":
+                                print("\nRequest aborted")
+                            else:
+                                print("\nInvalid input! Request aborted")
+                        #Remove a service
+                        elif modifyTimeBankServices == "1":
+                            pass
+                        #Remove all services
+                        elif modifyTimeBankServices == "2":
+                            pass
+                        #Exit this block
+                        elif modifyTimeBankServices == "3":
+                            break
+                        #Handles error and reruns the block when an illegal value is entered as input
+                        else:
+                            print("\nInvalid input!")
+                            continue
+                #Deposit time
+                elif timeBankChoice == "2":
+                    pass 
+                #Withdraw time
+                elif timeBankChoice == "3":
+                    pass
+                #Exit this block
+                elif timeBankChoice == "4":
+                    break 
+                #Handles error and reruns the block when an illegal value is entered as input
+                else:
+                    print("\nInvalid input!")
+                    continue
         #Access logs
         elif startChoice == "4":
             while True:
@@ -69,7 +134,7 @@ if __name__ == "__main__":
                         print("\nRequest aborted")
                     else:
                         print("\nInvalid input! Request aborted")
-                #Exits this block
+                #Exit this block
                 elif logAcessChoice == "3":
                     break 
                 #Handles error and reruns the block when an illegal value is entered as input
@@ -84,3 +149,6 @@ if __name__ == "__main__":
             print("\nInvalid input!")
             continue
     print("\nThank you for using DailyMine!\n")
+
+
+
