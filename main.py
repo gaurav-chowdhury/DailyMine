@@ -43,13 +43,26 @@ if __name__ == "__main__":
                     common.workFiles("logs.txt", "at", f"[{hold}]: Read and printed logs.txt")
                 #Delete record(s) by time stamp
                 elif logAcessChoice == "1":
-                    pass
+                    #code here
+                    confirmation = input("Are you sure that you want to do this(y/n)? ")
+                    if confirmation in "yY":
+                        pass #code here
+                    elif confirmation in "nN":
+                        print("\nRequest aborted")
+                    else:
+                        print("\nInvalid input! Request aborted")
                 #Delete all records
                 elif logAcessChoice == "2":
-                    hold = common.currentTime()
-                    common.workFiles("logs.txt", "wt", "")
-                    print("\nDeleted all records from logs")
-                    common.workFiles("logs.txt", "at", f"[{hold}]: Deleted all records from logs.txt")
+                    confirmation = input("Are you sure that you want to do this(y/n)? ")
+                    if confirmation in "yY":
+                        hold = common.currentTime()
+                        common.workFiles("logs.txt", "wt", "")
+                        print("\nDeleted all records from logs")
+                        common.workFiles("logs.txt", "at", f"[{hold}]: Deleted all records from logs.txt")
+                    elif confirmation in "nN":
+                        print("\nRequest aborted")
+                    else:
+                        print("\nInvalid input! Request aborted")
                 #Exits this block
                 elif logAcessChoice == "3":
                     break 
@@ -65,6 +78,3 @@ if __name__ == "__main__":
             print("\nInvalid input!")
             continue
     print("\nThank you for using DailyMine!\n")
-
-
-
