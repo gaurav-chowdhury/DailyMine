@@ -44,8 +44,23 @@ def currentTime():
     """
     return time.ctime(time.time())
 
+def removeIds(removeId, allIds):
+    """Removes the statement with the same time stamp as the entered time stamp from the text file
+
+    Args:
+        removeId (str): Time stamp of the statement to be removed
+        allIds (list): List of statements in the text file to be modified
+
+    Returns:
+        list: Returns the list of all statements after removing the statement with the same time stamp as the entered time stamp from the text file
+    """
+    for id in allIds:
+        if removeId in id:
+            removeThis = id
+    allIds.remove(removeThis)
+    return allIds
+
+
 if __name__ == "__main__":
     pass
-
-
 
