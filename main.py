@@ -107,8 +107,12 @@ if __name__ == "__main__":
                             continue
                 #Deposit time
                 elif timeBankChoice == "2":
-                    depositTimeHours = int(input("\nEnter the number of hours you want to deposit in the time bank in: "))
-                    depositTimeMinutes = int(input("\nEnter the number of minutes you want to deposit in the time bank in: "))
+                    try:
+                        depositTimeHours = int(input("\nEnter the number of hours you want to deposit in the time bank in: "))
+                        depositTimeMinutes = int(input("\nEnter the number of minutes you want to deposit in the time bank in: "))
+                    except ValueError:
+                        print("\nInvalid input!")
+                        continue
                     confirmation = input("\nAre you sure that you want to do this(y/n)? ")
                     if confirmation == "y" or confirmation == "Y":
                         hold = common.currentTime()
@@ -128,8 +132,12 @@ if __name__ == "__main__":
                         print("\nInvalid input! Request aborted")             
                 #Withdraw time
                 elif timeBankChoice == "3":
-                    withdrawTimeHours = int(input("\nEnter the number of hours you want to withdraw from the time bank in: "))
-                    withdrawTimeMinutes = int(input("\nEnter the number of minutes you want to withfraw from the time bank in: "))
+                    try:
+                        withdrawTimeHours = int(input("\nEnter the number of hours you want to withdraw from the time bank in: "))
+                        withdrawTimeMinutes = int(input("\nEnter the number of minutes you want to withfraw from the time bank in: "))
+                    except ValueError:
+                        print("\nInvalid input!")
+                        continue
                     confirmation = input("\nAre you sure that you want to do this(y/n)? ")
                     if confirmation == "y" or confirmation == "Y":
                         hold = common.currentTime()
