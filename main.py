@@ -1,4 +1,5 @@
 import common 
+from os import chdir, listdir, remove
 
 if __name__ == "__main__":
     print("\nWelcome to DailyMine!")
@@ -23,7 +24,48 @@ if __name__ == "__main__":
             pass
         #Organise your system
         elif startChoice == "2":
-            pass
+            while True:
+                print("\nHow would you like to organize your system?")
+                print("\n\tDelete duplicate files from the folder - 0")
+                print("\tReorganize files - 1")
+                print("\tGo back - 2")
+                organizeSystem = input("\nEnter the number corresponding to the option which you want to select: ")
+                #Delete duplicate files from the folder
+                if organizeSystem == "0":
+                    try:
+                        targetPath = input("\nEnter the location where the files are situated: ")
+                        chdir(targetPath)
+                    except:
+                        print("\nInvalid input!")
+                        continue
+                    hold = common.currentTime()
+                    crossCheck = []
+                    skipped = removed = 0
+                    folderFiles = listdir()
+                    for folderFile in folderFiles:
+                        fileContents = common.workFiles(folderFile, "rb", None)
+                        if fileContents not in crossCheck:
+                            skipped += 1
+                            crossCheck.append(fileContents)
+                            print(f"\nSkipped removing {folderFile} from {targetPath}")
+                        else:
+                            removed += 1
+                            remove(folderFile)
+                            print(f"\nRemoved {folderFile} from {targetPath}")
+                    common.changeDirectory(None)
+                    print(f"\nRemoved {removed} files from {targetPath}")
+                    print(f"\nSkipped removing {skipped} files from {targetPath}")
+                    common.workFiles("logs.txt", "at", f"[{hold}]: Removed {removed} files from {targetPath} and skipped removing {skipped} files from {targetPath}")
+                #Reorganize files
+                elif organizeSystem == "1":
+                    pass
+                #Exit this block
+                elif organizeSystem == "2":
+                    break
+                #Handles error and reruns the block when an illegal value is entered as input
+                else:
+                    print("\nInvalid input!")
+                    continue  
         #Use time bank
         elif startChoice == "3":
             while True:
