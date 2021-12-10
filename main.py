@@ -1,4 +1,3 @@
-from typing import final
 import common 
 
 if __name__ == "__main__":
