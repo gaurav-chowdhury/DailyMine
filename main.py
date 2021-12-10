@@ -1,3 +1,4 @@
+from typing import final
 import common 
 
 if __name__ == "__main__":
@@ -106,10 +107,49 @@ if __name__ == "__main__":
                             continue
                 #Deposit time
                 elif timeBankChoice == "2":
-                    pass 
+                    depositTimeHours = int(input("\nEnter the number of hours you want to deposit in the time bank in: "))
+                    depositTimeMinutes = int(input("\nEnter the number of minutes you want to deposit in the time bank in: "))
+                    confirmation = input("\nAre you sure that you want to do this(y/n)? ")
+                    if confirmation == "y" or confirmation == "Y":
+                        hold = common.currentTime()
+                        common.changeDirectory("time-bank")
+                        presentTime = common.workFiles("time.txt", "rt", None)
+                        presentTime = "".join(presentTime).split()
+                        totalTime = (depositTimeHours * 60) + depositTimeMinutes + (int(presentTime[0]) * 60) + int(presentTime[1])
+                        finalTimeHours = totalTime // 60
+                        finalTimeMinutes = totalTime % 60
+                        common.workFiles("time.txt", "wt", f"{finalTimeHours} {finalTimeMinutes}")
+                        common.changeDirectory(None)
+                        print(f"\nSuccessfully added {depositTimeHours} hours and {depositTimeMinutes} minutes to time bank")
+                        common.workFiles("logs.txt", "at", f"[{hold}]: Added {depositTimeHours} hours and {depositTimeMinutes} minutes to time bank")
+                    elif confirmation == "n" or confirmation == "N":
+                        print("\nRequest aborted")
+                    else:
+                        print("\nInvalid input! Request aborted")             
                 #Withdraw time
                 elif timeBankChoice == "3":
-                    pass
+                    withdrawTimeHours = int(input("\nEnter the number of hours you want to withdraw from the time bank in: "))
+                    withdrawTimeMinutes = int(input("\nEnter the number of minutes you want to withfraw from the time bank in: "))
+                    confirmation = input("\nAre you sure that you want to do this(y/n)? ")
+                    if confirmation == "y" or confirmation == "Y":
+                        hold = common.currentTime()
+                        common.changeDirectory("time-bank")
+                        presentTime = common.workFiles("time.txt", "rt", None)
+                        presentTime = "".join(presentTime).split()
+                        totalTime = (int(presentTime[0]) * 60) + int(presentTime[1]) - ((withdrawTimeHours * 60) + withdrawTimeMinutes)
+                        if totalTime <= 0:
+                            print("\nYou do not have enough balance to withdraw this much time from the time bank!")
+                        else:
+                            finalTimeHours = totalTime // 60
+                            finalTimeMinutes = totalTime % 60
+                            common.workFiles("time.txt", "wt", f"{finalTimeHours} {finalTimeMinutes}")
+                            common.changeDirectory(None)
+                            print(f"\nSuccessfully withdrawn {withdrawTimeHours} hours and {withdrawTimeMinutes} minutes from time bank")
+                            common.workFiles("logs.txt", "at", f"[{hold}]: Withdrawn {withdrawTimeHours} hours and {withdrawTimeMinutes} minutes from time bank")                    
+                    elif confirmation == "n" or confirmation == "N":
+                        print("\nRequest aborted")
+                    else:
+                        print("\nInvalid input! Request aborted") 
                 #Exit this block
                 elif timeBankChoice == "4":
                     break 
