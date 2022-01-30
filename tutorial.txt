@@ -1,0 +1,54 @@
+==========================================================================================================================
+
+DAILYMINE GUIDE
+
+DailyMine is an easy to use software written in python, with the intention of making it easier to reorganize your files and
+the directories containing them. 
+
+DailyMine offers you with three types of processes:
+
+> Deleting duplicate files from a directory
+> Filtering out files from a directory on the basis of:
+    >> Creation Date
+    >> Common keyword in file name or one file type
+and shifting the filtered files to a different location for easy access after the filtering is complete
+> Renaming all files in a directory in mass with a common keyword in the KEYWORD - COUNT.extension format
+
+Sounds great right? That's because it is.
+
+This is how DailyMine benefits you:
+
+> Saves your time by doing your work for you by taking just a few parameters to identify your requirements.
+> Helps to keep your system organized. 
+> Helps to get rid of duplicate files which use up space in your system.
+> Allows easy filtering of files.
+> Makes it easier to mass rename those files with weird names lying around in the folders.
+
+Okay so we have discussed how DailyMine helps you. But can it harm you as well? Well yes... You see, any interactive program
+m runs based on user input. Which means that if you enter something invalid or illegal as per the program's set rules, the pr
+ogram might go berzerk. Although we have tried our best to prevent it from harming your system or your files in this version 
+to the best of our capablities, there's always a chance something might go wrong. But this does not mean you should not use 
+DailyMine and go back to the old laborious way of managing your system files and folders. It just means that you need to be 
+careful while using the program.
+
+Following are some ways to protect yourself and your computer incase something goes wrong while using DailyMine:
+
+> If there is an unexpected error and you are unsure of what to do, terminate the program ASAP
+> Do not enter irrelevant or unnecessary data as input 
+> In case you do not have the required version of python or the modules being used by the program, we would recommend installing them before trying to run the program again 
+
+Some tips for using DailyMine:
+
+> If you are using DailyMine for the first time, there's a possiblity you might not be aware how it works with files from your system. Basically, any change made DailyMine to the file (be it name, content, location, etc) is permanent and irreversible. Yes, even Ctrl + Z or any other way to undo changes won't work. So it is recommended that you back up the folder on which you are going to use DailyMine to ensure that data is not lost in case of an unexpected behaviour.  
+> We would recommended that you try out all the facilities or the ones for which you are going to use DailyMine on a test folder if you new to it and are unsure about how to use it, or just want to see how it works.
+> Read the tutorial carefully if you are unsure of how to use the program or like suggested above, use it on a test folder with sample data before moving on to folders with actual data
+> Be careful while entering anything as input. 
+> We would recommend using the latest stable version of python compatible with sys, colorama, time and datetime and os modules being used by DailyMine.
+> Do not use the program if your device's battery is about to die.
+> We would recommend keeping the terminal in full screen mode for the ease of readablity
+> Do not change the code unless you are sure about what you are going to do with the changes. Running after changing the code will change how the program works, which might harm your system if not done correctly.
+> Avoid running the program on folders with too much data at once if your system is prone to heating easily. In such cases, divide the files between few folders and then use DailyMine
+
+DailyMine's Official Repository: https://github.com/gaurav-chowdhury/DailyMine
+ 
+==========================================================================================================================
