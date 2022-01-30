@@ -126,7 +126,7 @@ if __name__ == "__main__":
                             os.remove(directoryFile)
                     except:
                         time.sleep(.8)
-                        typeWriter("\n\nCould not access", directoryFile, ", skipping the file")
+                        typeWriter(f"\n\nCould not access {directoryFile}, skipping the file")
                 time.sleep(.8)
                 typeWriter("\n\nSuccessfully removed all duplicate files from the folder\n")
             # Filter through files
